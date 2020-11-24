@@ -1,0 +1,46 @@
+server:
+  port: 8089
+spring:
+  profiles:
+    active: dev
+  servlet:
+    multipart:
+      max-file-size: 100Mb
+      max-request-size: 100Mb
+  jackson:
+    date-format: yyyy/MM/dd HH:mm:ss
+    time-zone: GMT+8
+beetl:
+  suffix: html
+beetlsql:
+  enabled: false
+jwtp:
+  exclude-path: /api/login
+  max-token: 10
+  path: /api/**
+  store-type: 1
+mybatis-plus:
+  configuration:
+    cache-enabled: false
+    map-underscore-to-camel-case: true
+  global-config:
+    db-column-underline: true
+    field-strategy: 1
+    id-type: 0
+    logic-delete-value: 1
+    logic-not-delete-value: 0
+  mapper-locations: classpath:mapper/**/*Mapper.xml
+  typeAliasesPackage: com.wf.ew.*.model
+  mail:
+    default-encoding: UTF-8
+    host: mail.163.com
+    password: hhb411101
+    properties:
+      mail:
+        smtp:
+          auth: true
+          socketFactory:
+            class: javax.net.ssl.SSLSocketFactory
+            port: 465
+    username: huhb1002@163.com
+

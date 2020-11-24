@@ -1,0 +1,56 @@
+logging:
+  level:
+    com:
+      baomidou:
+        mybatisplus: DEBUG
+      wf:
+        ew: DEBUG
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      first:  #数据源 -- 基础数据库
+        url: jdbc:mysql://localhost:3306/easyweb-shiro?useUnicode=true&characterEncoding=utf8
+        username: root
+        password: root
+      second:  #数据源 -- 历史数据库
+        url: jdbc:mysql://127.0.0.1:3306/easy?useUnicode=true&characterEncoding=utf8
+        username: root
+        password: root
+      aop-patterns: com.wf.ew.*.service.*
+      filters: stat,wall
+      initial-size: 5
+      max-active: 20
+      max-wait: 30000
+      min-evictable-idle-time-millis: 300000
+      min-idle: 5
+      remove-abandoned: true
+      remove-abandoned-timeout: 1800
+      stat-view-servlet:
+        login-password: admin
+        login-username: admin
+        reset-enable: true
+        url-pattern: /druid/*
+      test-on-borrow: true
+      test-on-return: false
+      test-while-idle: true
+      time-between-eviction-runs-millis: 60000
+      validation-query: SELECT 'x'
+  redis:
+    host: localhost
+    port: 6379
+    password:
+    # 连接超时时间（毫秒）
+    timeout: 10000
+    jedis:
+      pool:
+        # 连接池中的最大空闲连接
+        max-idle: 8
+        # 连接池中的最小空闲连接
+        min-idle: 10
+        # 连接池最大连接数（使用负值表示没有限制）
+        max-active: 100
+        # 连接池最大阻塞等待时间（使用负值表示没有限制）
+        max-wait: -1
+
